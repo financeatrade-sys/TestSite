@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - TokenYouOwn</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="icon" href="images/favicon.ico">
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="home.html">TokenYouOwn</a>
+            </div>
+            <ul class="nav-links-dashboard">
+                <li id="userGreeting" class="user-info">Hello, Guest</li>
+                <li><a href="market.html">Market</a></li>
+                <li><a href="learning.html">Learning</a></li>
+                <li><button id="logoutBtn" class="cta-button">Logout</button></li> 
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="dashboard-container">
+        
+        <h1 class="welcome-heading">My Dashboard Overview</h1>
+
+        <section class="summary-grid">
+            
+            <div class="summary-card balance-card">
+				<h3>Wallet Balance (USD)</h3>
+				<p id="currentBalance" class="large-value">$0.00</p>
+    
+				<p class="data-detail">Reserved for Offers: <span id="reservedOffers" class="highlight-value">$0.00</span></p> 
+    
+				<div class="action-buttons">
+					<button class="small-btn">Deposit</button>
+					<button class="small-btn secondary-btn" id="transferToUserBtn">Transfer</button>
+					<button class="small-btn" id="withdrawBtn">Withdraw</button> 
+					<button class="small-btn secondary-btn" id="showTransactionsBtn">History</button> 
+				</div>
+			</div>
+
+            <div class="summary-card points-card">
+                <h3>Reward Points</h3>
+                <p id="currentPoints" class="large-value">0</p>
+                
+                <div class="action-buttons">
+                    <button class="small-btn convert-btn">Convert to Balance</button>
+                    <button class="small-btn secondary-btn" id="showPointsHistoryBtn">History</button> 
+                </div>
+            </div>
+            
+        </section>
+        <section class="dashboard-section staking-section">
+            <h2>💎 Prime Staking Management</h2>
+            <div class="staking-card">
+                <div class="staking-info">
+                    <p>Current Prime Level: <span id="primeLevel" class="highlight-value">0</span></p>
+                    <p>Staked Amount: <span id="stakedAmount" class="highlight-value">$0.00</span></p>
+                </div>
+                
+                <div class="staking-actions">
+                    <button id="stakeBtn" class="primary-submit-btn small-btn">Stake / Deposit</button>
+                    <button id="unstakeBtn" class="small-btn secondary-btn">Unstake / Withdraw</button>
+                </div>
+
+                <p id="unstakeStatus" class="data-message hidden">
+                    Unstake Requested. Available on: <span id="unstakeDate">--/--/----</span>
+                </p>
+            </div>
+        </section>
+
+
+        <section class="dashboard-section referral-section">
+            <h2>🔗 Referral Program</h2>
+
+            <div class="referral-info-card">
+                <h3>My Referral Code & Link</h3>
+                
+                <div class="referral-input-group">
+                    <label>Your Code:</label>
+                    <input type="text" id="myReferralCode" value="GENERATING..." readonly>
+                    <button class="small-btn copy-btn" data-target="myReferralCode">Copy Code</button>
+                </div>
+
+                <div class="referral-input-group">
+                    <label>Your Referral Link:</label>
+                    <input type="text" id="myReferralLink" value="GENERATING LINK..." readonly>
+                    <button class="small-btn copy-btn" data-target="myReferralLink">Copy Link</button>
+                </div>
+
+                <p class="total-earnings-display">
+                    Total Referral Earnings (Points): <span id="totalRefEarnings" class="highlight-value">0</span>
+                </p>
+            </div>
+
+            <div class="referral-card-details">
+                <h3>Referral Earnings Breakdown</h3>
+                <table id="referralsTable" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Referred User</th>
+                            <th>Total Earnings (Points)</th>
+                            <th>Date Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+                <p id="noReferralsMsg" class="data-message hidden">You haven't referred anyone yet.</p>
+            </div>
+
+        </section>
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 TokenYouOwn. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+
+    <script src="js/firebase-config.js"></script> 
+    <script src="js/app.js"></script> 
+
+</body>
+</html>

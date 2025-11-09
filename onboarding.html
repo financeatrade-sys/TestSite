@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Complete Your Profile - TokenYouOwn</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="stylesheet" href="styles/main.css"> 
+    
+    <link rel="icon" href="images/favicon.ico">
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    </head>
+<body>
+
+    <main class="auth-page-container">
+        <div class="auth-box">
+            
+            <header class="onboarding-header">
+                <h2>Almost There! 🥳</h2>
+                <p>Please complete the required details to activate your account and access the platform.</p>
+            </header>
+            
+            <p id="onboardingError" class="error-message"></p>
+            
+            <form id="onboardingForm" class="auth-form">
+                
+                <label for="username">Choose a Unique Username:</label>
+                <input type="text" id="onboardingUsername" required 
+                       placeholder="e.g., TraderX777"><br>
+
+                <label for="country">Your Country:</label>
+                <select id="onboardingCountry" required>
+                    <option value="" disabled selected>-- Select Your Country --</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    </select><br>
+
+                <label for="referralCode">Referral Code (Optional):</label>
+                <input type="text" id="onboardingReferralCode" 
+                       placeholder="Enter code if you have one"><br>
+
+                <button type="submit" class="primary-submit-btn">Complete & Start Trading</button>
+            </form>
+            </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 TokenYouOwn. All Rights Reserved.</p>
+    </footer>
+
+	<script src="js/firebase-config.js"></script> 
+	<script src="js/app.js"></script>
+    </body>
+</html>
