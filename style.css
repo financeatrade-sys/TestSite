@@ -562,6 +562,250 @@ Styles for the main dashboard grid, summary cards, and tables.
 --------------------------------------------------------
 */
 
+/* --------------------------------------------------------
+6. POOL PAGE STYLES START (pool.html)
+Styles for the dedicated points conversion pool page.
+--------------------------------------------------------
+*/
+
+/* 1. تنسيق شبكة حالة المجمع (Global Status) */
+.pool-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 3rem;
+}
+
+.status-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #e6f7ff; /* خلفية فاتحة بلون أزرق/لبني */
+    border: 1px solid #b3e6ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.timer-card {
+    background-color: #fffbe6; /* خلفية صفراء فاتحة للوقت */
+    border: 1px solid #ffeb3b;
+}
+
+.timer-text {
+    color: #ff9900; /* لون برتقالي لتركيز المؤقت */
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+
+
+/* 2. تنسيق منطقة التحويل الشخصية (Personal Conversion Area) */
+.conversion-area-section h2 {
+    margin-bottom: 1.5rem;
+}
+
+.conversion-flex-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; 
+}
+
+.conversion-card {
+    flex: 1; 
+    min-width: 320px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    border: 1px solid #eee;
+}
+
+.user-balance-info {
+    background-color: var(--color-light-gray);
+}
+
+/* تنسيق حقل الإدخال داخل الفورم */
+.submission-form-card .input-group {
+    margin-bottom: 1rem;
+}
+
+.submission-form-card .full-width-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+}
+
+/* --------------------------------------------------------
+6. POOL PAGE STYLES END
+--------------------------------------------------------
+*/
+/* --------------------------------------------------------
+7. ADMIN DASHBOARD STYLES START
+--------------------------------------------------------
+*/
+
+.pool-control-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.control-card {
+    flex: 1;
+    min-width: 300px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.action-card {
+    background-color: #ffe0e0; 
+    border: 1px solid #ff4d4d;
+}
+
+.control-card .input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.control-card .full-width-input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.danger-btn {
+    background-color: #dc3545; 
+    border: 1px solid #c82333;
+    color: white;
+    font-weight: bold;
+    padding: 1rem 1.5rem;
+    width: 100%; /* جعل الزر عريضًا */
+}
+
+.danger-btn:hover {
+    background-color: #c82333;
+}
+
+.large-btn {
+    font-size: 1.1rem;
+}
+
+.manual-settlement-trigger {
+    padding: 1rem;
+    border: 2px dashed #dc3545;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.danger-text {
+    color: #dc3545;
+}
+
+.user-results-table th:last-child,
+.user-results-table td:last-child {
+    width: 150px; 
+}
+
+/* --------------------------------------------------------
+7. ADMIN DASHBOARD STYLES END
+--------------------------------------------------------
+*/
+/* --------------------------------------------------------
+8. CONTENT MANAGEMENT SYSTEM STYLES START
+--------------------------------------------------------
+*/
+.tabs-container {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--color-text-light);
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px; 
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
+    font-weight: 600;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+/* تنسيق النموذج */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.full-width {
+    grid-column: 1 / -1; 
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#postContent {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* تنسيق جدول عرض المقالات */
+.content-results-table th:last-child,
+.content-results-table td:last-child {
+    width: 120px; 
+}
+
+/* --------------------------------------------------------
+8. CONTENT MANAGEMENT SYSTEM STYLES END
+--------------------------------------------------------
+*/
+
 /*
 ========================================================
 CSS STRUCTURED FILE END

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points Conversion Pool - TokenYouOwn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav id="mainNav">
+            <div class="logo">TokenYouOwn</div>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="market.html">Market</a>
+                <a href="pool.html" class="active">Pool</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 class="welcome-heading">Points Conversion Pool 🌊</h1>
+
+        <section class="dashboard-section pool-status-section">
+            <h2>Current Pool Status (Global)</h2>
+            <div class="pool-status-grid">
+                
+                <div class="status-card timer-card">
+                    <h3>Next Conversion Settlement</h3>
+                    <p id="countdownTimer" class="large-value timer-text">--:--:--</p>
+                    <p class="data-detail">Conversion happens once daily at midnight.</p>
+                </div>
+                
+                <div class="status-card">
+                    <h3>Current Pool Balance (USD)</h3>
+                    <p id="poolUSDValue" class="large-value">$0.00</p>
+                    <p class="data-detail">Source: Trading Fees & Platform Earnings</p>
+                </div>
+
+                <div class="status-card">
+                    <h3>Total Points Waiting</h3>
+                    <p id="totalPoolPoints" class="large-value">0</p>
+                    <p class="data-detail">Points submitted by all users.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="dashboard-section conversion-area-section">
+            <h2>Your Pool Submission</h2>
+            <div class="conversion-flex-wrapper">
+                
+                <div class="conversion-card user-balance-info">
+                    <h3>Your Available Balance</h3>
+                    <p class="data-detail">Reward Points:</p>
+                    <p id="currentPoints" class="large-value">0</p>
+                    
+                    <p class="data-detail">Points Pending Conversion:</p>
+                    <p id="pendingPoints" class="highlight-value">0</p>
+                </div>
+
+                <div class="conversion-card submission-form-card">
+                    <h3>Submit Points to Pool</h3>
+                    
+                    <div class="input-group">
+                        <input type="number" id="pointsToConvert" placeholder="Enter points to submit" min="1000" class="full-width-input">
+                    </div>
+                    
+                    <p id="conversionRateInfo" class="data-detail">Current Rate: <span id="poolRate">N/A</span> Points = 1 USD</p>
+                    <p class="data-detail">Est. Value: <span id="estUSDValue">$0.00</span></p>
+                    
+                    <button id="submitToPoolBtn" class="primary-submit-btn">Submit to Pool</button>
+                    <p id="submitErrorMsg" class="error-message hidden"></p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="dashboard-section history-section">
+            <h2>Your Submission History</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Date Submitted</th>
+                        <th>Points Amount</th>
+                        <th>Estimated USD Value</th>
+                        <th>Status</th>
+                        <th>USD Received</th>
+                    </tr>
+                </thead>
+                <tbody id="poolHistoryTableBody">
+                    </tbody>
+            </table>
+            <p id="noPoolHistoryMsg" class="data-message hidden">No submission history found.</p>
+        </section>
+
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="js/firebase-config.js"></script> 
+    <script src="js/app.js"></script> 
+</body>
+</html>

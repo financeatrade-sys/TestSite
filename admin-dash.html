@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TokenYouOwn</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav id="mainNav">
+            <div class="logo">TokenYouOwn Admin</div>
+            <div class="nav-links">
+                <a href="admin-dash.html" class="active">Admin Dashboard</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 class="welcome-heading" id="adminGreeting">Welcome, Admin! 👋</h1>
+
+        <section class="dashboard-section summary-section">
+            <h2>System Overview</h2>
+            <div class="summary-grid">
+                
+                <div class="summary-card large-value-card">
+                    <h3>Platform Total Balance (USD)</h3>
+                    <p id="platformBalance" class="large-value">$0.00</p>
+                    <p class="data-detail">Total assets available in the system.</p>
+                </div>
+                
+                <div class="summary-card large-value-card">
+                    <h3>Total Points Issued</h3>
+                    <p id="totalPointsIssued" class="large-value">0</p>
+                    <p class="data-detail">All points created across all users.</p>
+                </div>
+                
+                <div class="summary-card large-value-card">
+                    <h3>Total Staked Value (USD)</h3>
+                    <p id="totalStakedValue" class="large-value">$0.00</p>
+                    <p class="data-detail">Assets locked by Prime users.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="dashboard-section pool-control-section">
+            <h2>Pool Conversion Management</h2>
+            <div class="pool-control-wrapper">
+                
+                <div class="control-card setting-card">
+                    <h3>Update Pool Liquidity (USD)</h3>
+                    <p class="data-detail">Current Pool USD: <span id="currentPoolUSDValue">$0.00</span></p>
+                    <div class="input-group">
+                        <input type="number" id="addPoolAmount" placeholder="Add USD amount (e.g. 500.00)" min="0.01" step="0.01" class="full-width-input">
+                        <button id="updatePoolBtn" class="small-btn primary-submit-btn">Add to Pool</button>
+                    </div>
+                </div>
+
+                <div class="control-card action-card">
+                    <h3>Next Settlement Time Control</h3>
+                    <p class="data-detail">Currently Scheduled: <span id="scheduledSettlementDate">N/A</span></p>
+                    <div class="input-group date-time-group">
+                        <label for="nextSettlementDateTime">Date & Time:</label>
+                        <input type="datetime-local" id="nextSettlementDateTime" class="full-width-input">
+                    </div>
+                    <button id="setSettlementTimeBtn" class="primary-submit-btn large-btn">Set Next Settlement</button>
+                </div>
+
+            </div>
+
+            <div class="manual-settlement-trigger">
+                <h3 class="danger-text">Manual Settlement Trigger</h3>
+                <p class="data-message">Trigger conversion immediately. Use only in emergencies.</p>
+                <button id="runSettlementBtn" class="primary-submit-btn large-btn danger-btn">FORCE RUN SETTLEMENT NOW</button>
+            </div>
+        </section>
+
+        <section class="dashboard-section user-management-section">
+            <h2>User Management</h2>
+            <div class="input-group search-group">
+                <input type="text" id="userSearchInput" placeholder="Search by Username, Email, or UID" class="full-width-input">
+                <button id="searchUserBtn" class="small-btn primary-submit-btn">Search</button>
+            </div>
+            
+            <table class="data-table user-results-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Points</th>
+                        <th>Balance (USD)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userSearchResults">
+                    </tbody>
+            </table>
+        </section>
+
+        <section class="dashboard-section content-management-section">
+            <h2>Content Management System (CMS)</h2>
+            
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="publishTab">Publish New Article</button>
+                    <button class="tab-btn" data-tab="viewTab">View & Edit Articles</button>
+                </div>
+
+                <div id="publishTab" class="tab-content active">
+                    <form id="newPostForm" class="data-form">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="postTitle">Article Title:</label>
+                                <input type="text" id="postTitle" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="postCategory">Category:</label>
+                                <select id="postCategory" required>
+                                    <option value="">-- Select Category --</option>
+                                    <option value="academy">Academy (Tutorials/Guides)</option>
+                                    <option value="wiki">Wiki (Definitions/Terminology)</option>
+                                    <option value="news">News (Platform/Market Updates)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="postSlug">SEO Slug (Must be unique & English):</label>
+                                <input type="text" id="postSlug" placeholder="e.g. what-is-crypto-staking" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="coverImageUrl">Cover Image URL:</label>
+                                <input type="url" id="coverImageUrl" placeholder="https://example.com/image.jpg">
+                            </div>
+
+                            <div class="input-group">
+                                <label for="authorName">Author Name:</label>
+                                <input type="text" id="authorName" readonly>
+                            </div>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="editor">Article Content (Rich Text Editor):</label>
+                            <div id="editor" style="height: 300px;"></div> 
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="postStatusPublished">
+                                <label for="postStatusPublished">Publish Live Now (Leave unchecked for Draft)</label>
+                            </div>
+                            <button type="submit" class="primary-submit-btn">Publish / Save Draft</button>
+                            <p id="postMessage" class="data-message hidden"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="viewTab" class="tab-content hidden">
+                    <div class="input-group search-group">
+                        <input type="text" id="contentSearchInput" placeholder="Search by Title or Category" class="full-width-input">
+                        <select id="contentFilterCategory">
+                            <option value="">All Categories</option>
+                            <option value="academy">Academy</option>
+                            <option value="wiki">Wiki</option>
+                            <option value="news">News</option>
+                        </select>
+                        <select id="contentFilterStatus">
+                            <option value="">All Statuses</option>
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    </div>
+
+                    <table class="data-table content-results-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Author</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contentListBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="js/firebase-config.js"></script> 
+    <script src="js/app.js"></script> 
+</body>
+</html>
